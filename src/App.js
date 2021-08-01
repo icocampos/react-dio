@@ -1,25 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Fragment } from 'react'
+import ErrorBoundary from './ErrorBoundary'
 
-function App() {
+const store = [{ 
+  type: 'Roupa'
+}, { 
+  type:'Calçado'
+}, {
+   type:'Camiseta'
+}]
+
+function Column({ type }) {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <tr>
+      <td>{type}</td>
+    </tr> 
+  )
 }
 
-export default App;
+function App () {
+
+  const renderColums = (element, key) => ( 
+    <Fragment key={`column-${key}`}>
+      <Column type={element.type} />
+    </Fragment>  
+  )  
+
+
+  return (
+    <table>
+
+        {store.map(renderColums)}
+
+    </table>
+  )
+}
+
+export default App
