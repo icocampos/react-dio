@@ -1,38 +1,27 @@
-import React, { Fragment } from 'react'
-import ErrorBoundary from './ErrorBoundary'
-
-const store = [{ 
-  type: 'Roupa'
-}, { 
-  type:'Calçado'
-}, {
-   type:'Camiseta'
-}]
-
-function Column({ type }) {
-  return (
-    <tr>
-      <td>{type}</td>
-    </tr> 
-  )
-}
+import React, { useState } from 'react'
+import Button from './Component/Button'
+import Calc from './Component/Calc'
+import PhotosGallery from './Component/PhotosGallery'
 
 function App () {
 
-  const renderColums = (element, key) => ( 
-    <Fragment key={`column-${key}`}>
-      <Column type={element.type} />
-    </Fragment>  
-  )  
-
+  const photos = [
+    'http://placeimg.com/140/60/people',
+    'http://placeimg.com/140/60/animals',
+    'http://placeimg.com/140/60/tech',
+    'http://placeimg.com/140/60/any',
+    'http://placeimg.com/140/60/nature',
+  ]
 
   return (
-    <table>
-
-        {store.map(renderColums)}
-
-    </table>
+    <>
+      <h1>Galeria de Fotos</h1>
+      <PhotosGallery 
+      photos={photos}
+      />
+    </>
   )
+
 }
 
 export default App
